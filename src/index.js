@@ -42,7 +42,13 @@ function Square(props) {
     }
   
     render() {
-      const status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
+      const winner = calculateWinner(this.state.squares);
+      let status;
+      if(winner) {
+        status = 'Выйграл ' + winner;
+      } else {
+        status = 'Следующий ход: ' + (this.state.xIsNext ? 'X' : 'O');
+      }
   
       return (
         <div>
